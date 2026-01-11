@@ -18,7 +18,7 @@ hide_st_style = """
             [data-testid="stStatusWidget"] {visibility: hidden;}
             .st-emotion-cache-zq5wmm {display: none !important;} /* Menghilangkan footer 'Hosted by' */
             footer:after {
-                content:'Developed by [Heri_OPS]'; /* Opsional: Ganti tulisan footer jadi nama Anda */
+                content:'Developed by Heri_OPS'; /* Opsional: Ganti tulisan footer jadi nama Anda */
                 visibility: visible;
                 display: block;
                 position: relative;
@@ -180,6 +180,7 @@ if st.button("MULAI ANALISIS DATA"):
             st.error(f"Terjadi kesalahan API: {e}")
 
             st.info("Pastikan API Key Anda benar dan kuota masih tersedia.")
+
 
 
 
