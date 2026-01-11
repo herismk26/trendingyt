@@ -7,25 +7,45 @@ import base64
 # Tambahkan ini di bawah bagian import Anda
 import streamlit as st
 
-# Kode CSS super agresif untuk menghilangkan semua branding Streamlit
+# 1. Pastikan layout diatur ke 'wide' tapi tetap responsif
+st.set_page_config(
+    page_title="YouTube Research Pro", 
+    layout="wide", 
+    initial_sidebar_state="expanded" # Ini akan memaksa sidebar terbuka saat pertama kali diakses
+)
+
+# 2. CSS Khusus untuk Mobile & Menghilangkan Branding
 hide_st_style = """
             <style>
-            /* Menghilangkan Header (tombol GitHub, Fork, dll) */
+            /* Menghilangkan branding Streamlit */
             header {visibility: hidden !important;}
-            
-            /* Menghilangkan Footer (Made with Streamlit / Hosted with Streamlit) */
             footer {visibility: hidden !important;}
-            
-            /* Menghilangkan Menu titik tiga di pojok kanan */
             #MainMenu {visibility: hidden !important;}
-            
-            /* Menghilangkan garis merah di bagian atas */
             .stAppHeader {display: none !important;}
-            
-            /* Tambahan: Menghilangkan padding berlebih agar tampilan lebih profesional */
-            .block-container {
-                padding-top: 1rem;
-                padding-bottom: 0rem;
+
+            /* Perbaikan tampilan di Smartphone */
+            @media (max-width: 768px) {
+                /* Membuat teks judul lebih kecil di HP agar tidak berantakan */
+                .stHeading h1 {
+                    font-size: 1.5rem !important;
+                }
+                
+                /* Mengatur padding agar konten tidak terlalu mepet ke pinggir layar HP */
+                .block-container {
+                    padding: 1rem 0.5rem !important;
+                }
+
+                /* Memastikan kolom metrik (Views, VPH) tampil berjejer rapi di HP */
+                [data-testid="column"] {
+                    width: 33% !important;
+                    flex: 1 1 33% !important;
+                    min-width: 33% !important;
+                }
+                
+                /* Menghilangkan margin berlebih pada gambar thumbnail di HP */
+                .stImage {
+                    margin-bottom: 10px;
+                }
             }
             </style>
             """
@@ -182,6 +202,7 @@ if st.button("MULAI ANALISIS DATA"):
             st.error(f"Terjadi kesalahan API: {e}")
 
             st.info("Pastikan API Key Anda benar dan kuota masih tersedia.")
+
 
 
 
