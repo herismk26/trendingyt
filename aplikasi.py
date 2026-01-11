@@ -124,7 +124,7 @@ def fetch_data(region, limit, category, tipe):
 # ==========================================
 # 4. TAMPILAN UTAMA
 # ==========================================
-st.title("🚀 YouTube Trending Research Tool<p>Creted By Heri_OPS")
+st.title("🚀 YouTube Trending Research Tool")
 
 with st.sidebar:
     st.header("⚙️ Filter Riset")
@@ -180,6 +180,7 @@ if st.button("MULAI ANALISIS DATA"):
             st.error(f"Terjadi kesalahan API: {e}")
 
             st.info("Pastikan API Key Anda benar dan kuota masih tersedia.")
+
 
 
 
