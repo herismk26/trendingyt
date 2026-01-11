@@ -4,7 +4,19 @@ import pandas as pd
 from datetime import datetime, timezone, timedelta
 import isodate
 import base64
+# Tambahkan ini di bawah bagian import Anda
+import streamlit as st
 
+# Kode CSS untuk menyembunyikan header, menu GitHub, dan footer
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            header {visibility: hidden;}
+            footer {visibility: hidden;}
+            .st-emotion-cache-12fmjuu {display: none;} /* Menyembunyikan tombol GitHub/Fork */
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 # ==========================================
 # 1. KONFIGURASI API (GANTI API KEY ANDA)
 # ==========================================
@@ -157,5 +169,6 @@ if st.button("MULAI ANALISIS DATA"):
             st.error(f"Terjadi kesalahan API: {e}")
 
             st.info("Pastikan API Key Anda benar dan kuota masih tersedia.")
+
 
 
