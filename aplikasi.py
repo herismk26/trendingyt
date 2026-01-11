@@ -16,44 +16,16 @@ st.set_page_config(
 
 # 2. CSS Khusus untuk Mobile & Menghilangkan Branding
 # Kode CSS yang aman untuk Sidebar Mobile
+# Tambahkan ini di bawah bagian import Anda
+import streamlit as st
+
+# Kode CSS untuk menyembunyikan header, menu GitHub, dan footer
 hide_st_style = """
             <style>
-            /* 1. Sembunyikan HANYA elemen GitHub & Fork di pojok kanan atas */
-            [data-testid="stStatusWidget"] {
-                visibility: hidden !important;
-                display: none !important;
-            }
-            
-            .st-emotion-cache-12fmjuu, .st-emotion-cache-15ec669 {
-                display: none !important;
-            }
-
-            /* 2. Bersihkan Header tapi sisakan tombol Sidebar */
-            [data-testid="stHeader"] {
-                background-color: rgba(0,0,0,0) !important;
-            }
-
-            /* Sembunyikan semua elemen di dalam header kecuali tombol menu */
-            [data-testid="stHeader"] > div:first-child > div:nth-child(2) {
-                display: none !important;
-            }
-
-            /* 3. Pastikan tombol Sidebar di pojok kiri tetap terlihat dan berwarna merah */
-            button[data-testid="stSidebarCollapseIcon"] {
-                visibility: visible !important;
-                color: #ff4b4b !important;
-            }
-
-            /* 4. Hapus Footer & Menu utama */
-            footer {visibility: hidden !important;}
-            #MainMenu {visibility: hidden !important;}
-
-            /* 5. Penyesuaian Mobile */
-            @media (max-width: 768px) {
-                .block-container {
-                    padding-top: 3rem !important;
-                }
-            }
+            #MainMenu {visibility: hidden;}
+            header {visibility: hidden;}
+            footer {visibility: hidden;}
+            .st-emotion-cache-12fmjuu {display: none;} /* Menyembunyikan tombol GitHub/Fork */
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
@@ -209,6 +181,7 @@ if st.button("MULAI ANALISIS DATA"):
             st.error(f"Terjadi kesalahan API: {e}")
 
             st.info("Pastikan API Key Anda benar dan kuota masih tersedia.")
+
 
 
 
