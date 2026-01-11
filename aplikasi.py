@@ -121,7 +121,7 @@ with st.sidebar:
     tipe = st.radio("Format Konten", ["Semua", "Shorts", "Video Panjang"])
     jumlah = st.slider("Banyak Video", 5, 50, 10)
     st.divider()
-    st.caption("Tools ini mengambil data real-time dari YouTube API v3.")
+            
 
 if st.button("MULAI ANALISIS DATA"):
     with st.spinner('Menghubungkan ke server YouTube...'):
@@ -169,6 +169,7 @@ if st.button("MULAI ANALISIS DATA"):
             st.error(f"Terjadi kesalahan API: {e}")
 
             st.info("Pastikan API Key Anda benar dan kuota masih tersedia.")
+
 
 
 
