@@ -17,6 +17,25 @@ hide_st_style = """
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
+# Kode CSS untuk menyembunyikan footer dan elemen branding lainnya
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            header {visibility: hidden;}
+            footer {visibility: hidden;}
+            [data-testid="stStatusWidget"] {visibility: hidden;}
+            .st-emotion-cache-zq5wmm {display: none !important;} /* Menghilangkan footer 'Hosted by' */
+            footer:after {
+                content:'Developed by [Heri_OPS]'; /* Opsional: Ganti tulisan footer jadi nama Anda */
+                visibility: visible;
+                display: block;
+                position: relative;
+                padding: 5px;
+                top: 2px;
+            }
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 # ==========================================
 # 1. KONFIGURASI API (GANTI API KEY ANDA)
 # ==========================================
@@ -169,6 +188,7 @@ if st.button("MULAI ANALISIS DATA"):
             st.error(f"Terjadi kesalahan API: {e}")
 
             st.info("Pastikan API Key Anda benar dan kuota masih tersedia.")
+
 
 
 
