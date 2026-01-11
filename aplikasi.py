@@ -18,43 +18,40 @@ st.set_page_config(
 # Kode CSS yang aman untuk Sidebar Mobile
 hide_st_style = """
             <style>
-            /* 1. Sembunyikan elemen dekorasi header (Garis merah & tombol github) */
-            [data-testid="stHeader"] {
-                background-color: rgba(0,0,0,0) !important;
-                height: 3rem !important;
+            /* 1. Sembunyikan HANYA elemen GitHub & Fork di pojok kanan atas */
+            [data-testid="stStatusWidget"] {
+                visibility: hidden !important;
+                display: none !important;
             }
             
-            /* Sembunyikan semua anak elemen di header KECUALI tombol sidebar */
-            [data-testid="stHeader"] > div:first-child {
-                visibility: hidden !important;
+            .st-emotion-cache-12fmjuu, .st-emotion-cache-15ec669 {
+                display: none !important;
             }
 
-            /* 2. PAKSA tombol sidebar agar muncul kembali */
-            [data-testid="stSidebarCollapseIcon"], 
-            button[kind="header"] {
+            /* 2. Bersihkan Header tapi sisakan tombol Sidebar */
+            [data-testid="stHeader"] {
+                background-color: rgba(0,0,0,0) !important;
+            }
+
+            /* Sembunyikan semua elemen di dalam header kecuali tombol menu */
+            [data-testid="stHeader"] > div:first-child > div:nth-child(2) {
+                display: none !important;
+            }
+
+            /* 3. Pastikan tombol Sidebar di pojok kiri tetap terlihat dan berwarna merah */
+            button[data-testid="stSidebarCollapseIcon"] {
                 visibility: visible !important;
-                display: flex !important;
-                color: #ff4b4b !important; /* Warna merah agar terlihat */
-                z-index: 999999 !important;
+                color: #ff4b4b !important;
             }
 
-            /* 3. Menghilangkan Footer & Menu */
+            /* 4. Hapus Footer & Menu utama */
             footer {visibility: hidden !important;}
             #MainMenu {visibility: hidden !important;}
 
-            /* 4. Penyesuaian Mobile */
+            /* 5. Penyesuaian Mobile */
             @media (max-width: 768px) {
                 .block-container {
-                    padding-top: 3.5rem !important;
-                }
-                
-                /* Memastikan tombol sidebar mudah ditekan di layar HP */
-                button[kind="header"] {
-                    background-color: white !important;
-                    border-radius: 50% !important;
-                    box-shadow: 0px 0px 5px rgba(0,0,0,0.2) !important;
-                    left: 10px !important;
-                    top: 10px !important;
+                    padding-top: 3rem !important;
                 }
             }
             </style>
@@ -212,6 +209,7 @@ if st.button("MULAI ANALISIS DATA"):
             st.error(f"Terjadi kesalahan API: {e}")
 
             st.info("Pastikan API Key Anda benar dan kuota masih tersedia.")
+
 
 
 
