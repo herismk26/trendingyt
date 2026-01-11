@@ -7,23 +7,25 @@ import base64
 # Tambahkan ini di bawah bagian import Anda
 import streamlit as st
 
-# Kode CSS untuk menyembunyikan header, menu GitHub, dan footer
-
-# Kode CSS untuk menyembunyikan footer dan elemen branding lainnya
+# Kode CSS super agresif untuk menghilangkan semua branding Streamlit
 hide_st_style = """
             <style>
-            #MainMenu {visibility: hidden;}
-            header {visibility: hidden;}
-            footer {visibility: hidden;}
-            [data-testid="stStatusWidget"] {visibility: hidden;}
-            .st-emotion-cache-zq5wmm {display: none !important;} /* Menghilangkan footer 'Hosted by' */
-            footer:after {
-                content:'Developed by Heri_OPS'; /* Opsional: Ganti tulisan footer jadi nama Anda */
-                visibility: visible;
-                display: block;
-                position: relative;
-                padding: 5px;
-                top: 2px;
+            /* Menghilangkan Header (tombol GitHub, Fork, dll) */
+            header {visibility: hidden !important;}
+            
+            /* Menghilangkan Footer (Made with Streamlit / Hosted with Streamlit) */
+            footer {visibility: hidden !important;}
+            
+            /* Menghilangkan Menu titik tiga di pojok kanan */
+            #MainMenu {visibility: hidden !important;}
+            
+            /* Menghilangkan garis merah di bagian atas */
+            .stAppHeader {display: none !important;}
+            
+            /* Tambahan: Menghilangkan padding berlebih agar tampilan lebih profesional */
+            .block-container {
+                padding-top: 1rem;
+                padding-bottom: 0rem;
             }
             </style>
             """
@@ -180,6 +182,7 @@ if st.button("MULAI ANALISIS DATA"):
             st.error(f"Terjadi kesalahan API: {e}")
 
             st.info("Pastikan API Key Anda benar dan kuota masih tersedia.")
+
 
 
 
