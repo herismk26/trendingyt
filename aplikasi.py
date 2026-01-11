@@ -15,36 +15,42 @@ st.set_page_config(
 )
 
 # 2. CSS Khusus untuk Mobile & Menghilangkan Branding
+# Kode CSS yang aman untuk Sidebar Mobile
 hide_st_style = """
             <style>
-            /* Menghilangkan branding Streamlit */
-            header {visibility: hidden !important;}
+            /* 1. Sembunyikan Header Background & Tombol GitHub/Fork */
+            header[data-testid="stHeader"] {
+                background-color: rgba(0,0,0,0) !important;
+                color: transparent !important;
+            }
+            
+            /* Sembunyikan elemen dekorasi header lainnya */
+            header[data-testid="stHeader"] > div:first-child {
+                display: none !important;
+            }
+
+            /* 2. Pastikan Tombol Sidebar (Hamburger) TETAP ADA & BISA DIKLIK */
+            button[data-testid="stSidebarCollapseIcon"] {
+                color: #ff4b4b !important; /* Warna tombol agar terlihat (Merah) */
+                visibility: visible !important;
+            }
+
+            /* 3. Menghilangkan Footer 'Made with Streamlit' */
             footer {visibility: hidden !important;}
             #MainMenu {visibility: hidden !important;}
-            .stAppHeader {display: none !important;}
 
-            /* Perbaikan tampilan di Smartphone */
+            /* 4. Optimasi Mobile agar kolom tetap rapi */
             @media (max-width: 768px) {
-                /* Membuat teks judul lebih kecil di HP agar tidak berantakan */
-                .stHeading h1 {
-                    font-size: 1.5rem !important;
+                .block-container {
+                    padding-top: 3rem !important; /* Beri ruang agar tidak tertutup tombol sidebar */
+                    padding-left: 1rem !important;
+                    padding-right: 1rem !important;
                 }
                 
-                /* Mengatur padding agar konten tidak terlalu mepet ke pinggir layar HP */
-                .block-container {
-                    padding: 1rem 0.5rem !important;
-                }
-
-                /* Memastikan kolom metrik (Views, VPH) tampil berjejer rapi di HP */
                 [data-testid="column"] {
                     width: 33% !important;
                     flex: 1 1 33% !important;
                     min-width: 33% !important;
-                }
-                
-                /* Menghilangkan margin berlebih pada gambar thumbnail di HP */
-                .stImage {
-                    margin-bottom: 10px;
                 }
             }
             </style>
@@ -202,6 +208,7 @@ if st.button("MULAI ANALISIS DATA"):
             st.error(f"Terjadi kesalahan API: {e}")
 
             st.info("Pastikan API Key Anda benar dan kuota masih tersedia.")
+
 
 
 
