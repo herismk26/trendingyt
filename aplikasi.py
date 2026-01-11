@@ -8,7 +8,7 @@ import base64
 # ==========================================
 # 1. KONFIGURASI API (GANTI API KEY ANDA)
 # ==========================================
-API_KEY = "AIzaSyB-2vyqGeSwkrNEVuFWkClq2G845ctms6c"
+API_KEY = st.secrets["AIzaSyB-2vyqGeSwkrNEVuFWkClq2G845ctms6c"]
 youtube = build('youtube', 'v3', developerKey=API_KEY)
 
 # ==========================================
@@ -154,4 +154,5 @@ if st.button("MULAI ANALISIS DATA"):
                 
         except Exception as e:
             st.error(f"Terjadi kesalahan API: {e}")
+
             st.info("Pastikan API Key Anda benar dan kuota masih tersedia.")
